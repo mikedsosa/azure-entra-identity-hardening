@@ -1,0 +1,9 @@
+// What WOULD the report-only policies have done? Run this before switching any policy to "enabled".
+SigninLogs
+| where TimeGenerated > ago(7d)
+| mv-expand ca = ConditionalAccessPolicies
+| extend PolicyName = tostring(ca.displayName), Result = tostring(ca.result)
+| where PolicyName startswith "CA0"
+| where Result startswith "reportOnly"
+| summarize SignIns = count(), Users = dcount(UserPrincipalName) by PolicyName, Result
+| order by PolicyName asc, SignIns desc

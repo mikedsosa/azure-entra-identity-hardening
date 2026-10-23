@@ -1,0 +1,29 @@
+# Copy to terraform.tfvars (which is git-ignored) and fill in YOUR lab values.
+# Never commit the real file.
+
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+subscription_id = "00000000-0000-0000-0000-000000000000"
+
+prefix   = "idlab"
+location = "eastus2"
+
+# Keep report-only until you have reviewed the "What If" tool and sign-in logs.
+ca_policy_state = "enabledForReportingButNotEnforced"
+
+# Object IDs of the two break-glass accounts you created manually.
+break_glass_user_object_ids = [
+  # "00000000-0000-0000-0000-000000000000",
+  # "00000000-0000-0000-0000-000000000000",
+]
+
+# Turn these on only after an Entra ID P2 license or trial is active.
+enable_risk_based_policies = false
+enable_pim                 = false
+pim_eligible_entra_role    = "Security Reader"
+
+enable_entra_log_export = true
+log_retention_days      = 30
+log_daily_quota_gb      = 1
+
+# Optional: where to send break-glass sign-in alerts.
+alert_email = ""

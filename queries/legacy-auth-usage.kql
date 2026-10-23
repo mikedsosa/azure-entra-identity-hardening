@@ -1,0 +1,6 @@
+// Who is still using legacy authentication? These users/apps break when CA002 is enforced.
+SigninLogs
+| where TimeGenerated > ago(30d)
+| where ClientAppUsed !in ("Browser", "Mobile Apps and Desktop clients")
+| summarize SignIns = count(), LastSeen = max(TimeGenerated) by UserPrincipalName, ClientAppUsed, AppDisplayName
+| order by SignIns desc

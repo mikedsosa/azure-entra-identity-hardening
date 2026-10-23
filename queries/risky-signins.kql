@@ -1,0 +1,7 @@
+// Risky sign-ins and the CA outcome (needs Entra ID P2 for risk data).
+SigninLogs
+| where TimeGenerated > ago(7d)
+| where RiskLevelDuringSignIn in ("medium", "high")
+| project TimeGenerated, UserPrincipalName, IPAddress, Location, RiskLevelDuringSignIn,
+          RiskEventTypes_V2, ConditionalAccessStatus, ResultType
+| order by TimeGenerated desc

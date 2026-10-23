@@ -1,0 +1,9 @@
+// Role assignments, PIM activations, and CA policy changes in the last 7 days.
+AuditLogs
+| where TimeGenerated > ago(7d)
+| where Category in ("RoleManagement", "Policy")
+    or OperationName has_any ("Add member to role", "Add eligible member to role", "conditional access")
+| project TimeGenerated, OperationName, Result,
+          Actor = tostring(InitiatedBy.user.userPrincipalName),
+          Target = tostring(TargetResources[0].displayName)
+| order by TimeGenerated desc

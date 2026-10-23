@@ -1,0 +1,41 @@
+# Terraform state and working files (state can hold tenant IDs and secrets)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.plan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files hold real tenant/subscription IDs and object IDs.
+# Only the *.example file is committed.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Secrets and local env
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.publishsettings
+.azure/
+secrets/
+
+# tflint plugin cache
+.tflint.d/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

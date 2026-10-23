@@ -1,0 +1,7 @@
+// Any sign-in by a break-glass account (replace the GUIDs with your accounts' object IDs).
+let breakGlass = dynamic(["00000000-0000-0000-0000-000000000000"]);
+union isfuzzy=true SigninLogs, AADNonInteractiveUserSignInLogs
+| where TimeGenerated > ago(30d)
+| where UserId in (breakGlass)
+| project TimeGenerated, UserPrincipalName, IPAddress, Location, AppDisplayName, ResultType, ConditionalAccessStatus
+| order by TimeGenerated desc
