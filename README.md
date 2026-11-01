@@ -1,5 +1,8 @@
 # Entra ID Identity Hardening as Code
 
+## What this shows
+Identity controls written as code, so every change can be reviewed in a pull request, versioned, and rolled back. Every Conditional Access policy starts in report-only mode, and every policy excludes a break-glass group so one bad change can't lock everyone out. Security operators get eligible roles through PIM instead of standing admin rights, and the VM operator role can start and stop machines but not delete them. The code passes static checks but hasn't been applied to a tenant yet, so nothing here claims the policies behave as intended. I wrote about what building it taught me in [Report-Only First](https://mikedsosa.com/blog/report-only-first/).
+
 Baseline Microsoft Entra ID identity controls (Conditional Access, break-glass
 exclusions, least-privilege RBAC, PIM eligibility, and sign-in/audit log
 export) written in Terraform so they can be reviewed, versioned, tested, and
