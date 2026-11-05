@@ -14,6 +14,11 @@ rolled back like any other code.
 > applied to a tenant yet. Everything under *Deploy* and *Validate* is
 > **untested. Deploy it yourself** in a lab tenant and record your own results.
 
+## Lab / how to run
+
+Terraform lab for Microsoft Entra ID identity controls (Conditional Access, break-glass exclusions, least-privilege RBAC, PIM eligibility, and sign-in/audit log export). It is a lab project, not production, and has not been applied to a tenant yet. Run the same static checks CI uses (`terraform fmt`, `terraform validate`, `tflint`, `checkov`), then deploy only in your own lab tenant with `terraform plan` / `terraform apply` after filling `terraform.tfvars` from the example. Full steps are under [Setup and deploy](#setup-and-deploy-untested-deploy-it-yourself).
+
+
 ---
 
 ## Problem
