@@ -88,7 +88,7 @@ More detail, including the trust boundaries, is in
 | `pim.tf` | Eligible Entra role for security operators, eligible Azure role (expires after 30 days) | Entra ID P2 or Entra ID Governance |
 | `rbac.tf` | Resource group, custom "Lab VM Operator" role, read-only Log Analytics Reader assignment | None beyond Azure |
 | `logging.tf` | Log Analytics workspace (1 GB/day cap, local auth disabled), Entra diagnostic setting, break-glass sign-in alert, optional email action group | P1/P2 to export sign-in logs |
-| `queries/` | KQL for report-only impact, legacy auth usage, risky sign-ins, privileged changes, break-glass use | — |
+| `queries/` | KQL for report-only impact, legacy auth usage, risky sign-ins, privileged changes, break-glass use | - |
 
 ## Prerequisites
 
@@ -209,7 +209,7 @@ supports **SC-100** (see the companion reference architecture repo).
 | `pim.tf` | Implement and configure Privileged Identity Management (PIM) | Plan and manage Azure resources in Microsoft Entra PIM |
 | `rbac.tf` custom role | Manage custom roles, including Azure roles and Microsoft Entra roles | Manage custom roles, including Azure roles and Microsoft Entra roles |
 | `rbac.tf` Log Analytics Reader | Manage Azure built-in role assignments | Manage Azure built-in role assignments |
-| Whole repo + CI | Implement and configure security controls by using infrastructure as code | — |
+| Whole repo + CI | Implement and configure security controls by using infrastructure as code | - |
 | `logging.tf`, `queries/` | Create and connect workspaces in Microsoft Sentinel (workspace foundation); Configure and use Microsoft data connectors | Configure data connectors in Microsoft Sentinel |
 
 Sources: [SC-500 study guide](https://learn.microsoft.com/credentials/certifications/resources/study-guides/sc-500),

@@ -20,7 +20,7 @@ alert from `queries/risky-signins.kql`.
 |---|---|---|
 | 1 | Activate least-privilege role through PIM (Security Operator) with incident ticket as justification | My roles → Activate |
 | 2 | Triage: risk level, detection type (unfamiliar location, anonymous IP, leaked credentials, AiTM), IP, app, CA result, MFA result | Entra → ID Protection → Risky sign-ins; `risky-signins.kql` |
-| 3 | Contact the user out-of-band (phone/known chat, not the email that may be compromised). Was it them? | — |
+| 3 | Contact the user out-of-band (phone/known chat, not the email that may be compromised). Was it them? | - |
 | 4a | **Confirmed safe:** mark *Confirm sign-in safe* and document why | ID Protection |
 | 4b | **Compromised or unsure:** revoke sessions (`az rest --method post --url https://graph.microsoft.com/v1.0/users/<id>/revokeSignInSessions`), reset password, require MFA re-registration, mark *Confirm compromised* | Entra / Graph |
 | 5 | Scope: what did the session touch? Mailbox rules, OAuth consents, MFA method changes, file access in the window | AuditLogs, `privileged-role-changes.kql`, M365 audit |
@@ -40,10 +40,10 @@ admin account, unexpected CA policy change, or a tip from the admin.
 | 2 | **Check persistence:** new users, new admins, new app registrations / credentials on service principals, new federation/domain settings, changes to CA policies or the exclusion group, new PIM settings | `privileged-role-changes.kql`, AuditLogs, Entra → Enterprise apps |
 | 3 | **Restore the control plane:** run `terraform plan` to see drift from the known-good CA/PIM config, then `apply` to restore it | IaC is the source of truth |
 | 4 | **Azure scope:** review Azure Activity Log for role assignments, resource deletions, Key Vault access, diagnostic setting changes | Azure Monitor |
-| 5 | **Eradicate:** remove attacker-created objects, rotate secrets the admin could read, re-register admin with new FIDO2 key | — |
-| 6 | **Recover:** re-enable account only after re-issuing credentials and confirming device is clean | — |
-| 7 | **Notify:** follow your organization's incident and legal notification process | — |
-| 8 | **Post-incident:** why did the admin hold standing access? Was CA003 enforced? Update threat model | — |
+| 5 | **Eradicate:** remove attacker-created objects, rotate secrets the admin could read, re-register admin with new FIDO2 key | - |
+| 6 | **Recover:** re-enable account only after re-issuing credentials and confirming device is clean | - |
+| 7 | **Notify:** follow your organization's incident and legal notification process | - |
+| 8 | **Post-incident:** why did the admin hold standing access? Was CA003 enforced? Update threat model | - |
 
 ## 3. Break-glass (emergency access)
 
